@@ -8,7 +8,7 @@ def people_finder_constructor():
     person_finder_informations = people_finder_view.find_person_view()
     response = people_finder_controller.find_by_name(person_finder_informations)
 
-    if response["success"]:
-        people_finder_view.find_person_success(response["message"])
+    if response.get("success"):
+        people_finder_view.find_person_success(response.get("message", "OK"))
     else:
-        people_finder_view.find_person_fail(response["erorr"])
+        people_finder_view.find_person_fail(response.get("error", "Falha ao buscar pessoa."))
